@@ -31,10 +31,9 @@ use Windwalker\Renderer\BladeRenderer;
 
 function view($name, $data = [])
 {
-
     $paths = [HEIDI_PLUGIN_PATH . 'views/'];
 
     $renderer = new BladeRenderer($paths, array('cache_path' => __DIR__ . '/cache'));
 
-    echo $renderer->render('admin_settings', $data);
+    echo $renderer->render($name, $data);
 }

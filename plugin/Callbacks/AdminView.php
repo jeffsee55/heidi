@@ -8,6 +8,6 @@ class AdminView
     {
         global $wp_query;
         $test = 'hello';
-        view('admin_settings', compact('wp_query'));
+        view('admin.admin_settings', compact('test'));
     }
 }
