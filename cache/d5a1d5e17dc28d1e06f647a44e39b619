@@ -3,7 +3,7 @@
     <p>This is my body content.</p>
     <?php echo $post->title(); ?>
 
-    <?php echo $post->get_preview(); ?>
+    <?php echo $post->get_content(); ?>
 
 <?php $__env->stopSection(); ?>
 
