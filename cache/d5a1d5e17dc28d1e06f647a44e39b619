@@ -1,7 +1,9 @@
 <?php $__env->startSection('content'); ?>
     <h1>Hello</h1>
     <p>This is my body content.</p>
-    <?php echo isset($test) ? $test : 'Default'; ?>
+    <?php echo $post->title(); ?>
+
+    <?php echo $post->get_preview(); ?>
 
 <?php $__env->stopSection(); ?>
 

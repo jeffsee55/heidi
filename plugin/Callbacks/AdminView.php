@@ -2,12 +2,13 @@
 
 namespace Heidi\Plugin\Callbacks;
 
+use Heidi\Plugin\Models\Post;
+
 class AdminView
 {
     public function render()
     {
-        global $wp_query;
-        $test = 'hello';
-        view('admin.admin_settings', compact('test'));
+        $post = new Post(1);
+        view('admin.admin_settings', compact('post'));
     }
 }
