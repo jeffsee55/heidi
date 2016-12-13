@@ -11,8 +11,15 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: heidi
 Domain Path: /languages
 */
+
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
+define('HEIDI_PLUGIN_PATH', dirname(__FILE__) . '/plugin/');
 
 require __DIR__ . '/bootstrap.php';
 
 $plugin = getPlugin();
+
+add_action('init', function() {
+    Heidi\Core\Router::load('routes.php');
+});

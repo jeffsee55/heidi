@@ -1,8 +1,8 @@
 <?php
 
-namespace Heidi;
+namespace Heidi\Plugin;
 
-class Heidi
+class Plugin
 {
     protected static $singleInstance = null;
 
@@ -15,4 +15,7 @@ class Heidi
 
         return self::$singleInstance;
     }
+
+    public function __construct()
+    {}
 }
