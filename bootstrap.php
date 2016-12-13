@@ -27,9 +27,14 @@ function dd($item)
     exit();
 }
 
+use Windwalker\Renderer\BladeRenderer;
+
 function view($name, $data = [])
 {
-    extract($data);
 
-    return require "views/{$name}.blade.php";
+    $paths = [HEIDI_PLUGIN_PATH . 'views/'];
+
+    $renderer = new BladeRenderer($paths, array('cache_path' => __DIR__ . '/cache'));
+
+    echo $renderer->render('admin_settings', $data);
 }

@@ -1,0 +1,5 @@
+
+<div class="wrap">
+<h1>Hello</h1>
+<?php var_dump($wp_query); ?>
+</div>

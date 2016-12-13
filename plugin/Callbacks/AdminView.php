@@ -6,6 +6,8 @@ class AdminView
 {
     public function render()
     {
-        return view('admin_settings', compact('data'));
+        global $wp_query;
+        $test = 'hello';
+        view('admin_settings', compact('wp_query'));
     }
 }
