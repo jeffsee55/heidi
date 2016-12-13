@@ -2,7 +2,7 @@
 
 # Heidi
 ___
-### Because your code deserves a home
+### Because your plugin code deserves a home
 Heidi is a Wordpress plugin framework with the idea that every piece of code should have a home. Heidi takes an opinionated approach about how your hooks should be organized & delegated. Heidi relies extensively on the Wordpress hooks API, mimicking an MVC framework to compute, delegate, and render plugin functionality.
 >Please note: This is not an MVC framework. There is no concept of REST, it is merely a structure that flows in a similar fashion.
 
