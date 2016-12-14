@@ -27,6 +27,13 @@ function dd($item)
     exit();
 }
 
+function capture($output)
+{
+    ob_start();
+    $output;
+    return ob_get_clean();
+}
+
 use Windwalker\Renderer\BladeRenderer;
 
 function view($name, $data = [])
