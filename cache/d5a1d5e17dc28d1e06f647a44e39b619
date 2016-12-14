@@ -1,9 +1,8 @@
 <?php $__env->startSection('content'); ?>
     <h1>Hello</h1>
     <p>This is my body content.</p>
-    <?php echo $post->title(); ?>
-
-    <?php echo $post->get_content(); ?>
+    <?php dd($user); ?>
+    <?php echo $user->ID; ?>
 
 <?php $__env->stopSection(); ?>
 

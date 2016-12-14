@@ -2,13 +2,13 @@
 
 namespace Heidi\Plugin\Callbacks;
 
-use Heidi\Plugin\Models\Post;
+use Heidi\Plugin\Models\User;
 
 class AdminView
 {
     public function render()
     {
-        $post = new Post(1);
-        view('admin.admin_settings', compact('post'));
+        $user = new User(1);
+        view('admin.admin_settings', compact('user'));
     }
 }
