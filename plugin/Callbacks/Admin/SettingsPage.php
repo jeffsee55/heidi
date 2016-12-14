@@ -2,7 +2,9 @@
 
 namespace Heidi\Plugin\Callbacks\Admin;
 
-class SettingsPage
+use Heidi\Core\Callback;
+
+class SettingsPage extends Callback
 {
     protected $hook_suffix;
 
@@ -18,9 +20,19 @@ class SettingsPage
         view('admin.settings_page', compact('hook_suffix'));
     }
 
-    public function renderImportMetaBox()
+    public function generalBox()
+    {
+        view('admin.settings.general_box');
+    }
+
+    public function importBox()
     {
         view('admin.settings.import_box');
+    }
+
+    public function apiBox()
+    {
+        view('admin.settings.api_box');
     }
 
     public function settingsFooter()

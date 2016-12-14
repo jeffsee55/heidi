@@ -1,0 +1,21 @@
+#sections {
+  border:1px solid #ccc;
+  border-top:0px;
+  padding: 1rem;
+
+  .hide-if-js {
+    display: block;
+  }
+}
+
+section {
+  display:none;
+}
+
+section:first-child {
+  display:block;
+}
+
+#poststuff.q4vr-settings-page {
+    padding-top: 0px;
+}

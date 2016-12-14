@@ -2,7 +2,9 @@
 
 namespace Heidi\Plugin\Callbacks\Admin;
 
-class VacationRentalPage
+use Heidi\Core\Callback;
+
+class VacationRentalPage extends Callback
 {
     public function render($post, $metaBox)
     {
