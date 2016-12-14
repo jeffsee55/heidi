@@ -1,19 +1,19 @@
 <?php
 
-namespace Heidi\Plugin\Controllers;
+namespace Heidi\Plugin\Controllers\Admin;
 
-use Heidi\Plugin\Callbacks\AdminView;
+use Heidi\Plugin\Callbacks\Admin\Page;
 
-class AdminController
+class PagesController
 {
-    function registerSettingsPage()
+    function addPage()
     {
         add_menu_page(
             'Special Settings',
             'Special Settings',
             'manage_options',
             'special-settings',
-            [new AdminView, 'render']
+            [new Page, 'render']
         );
     }
 }

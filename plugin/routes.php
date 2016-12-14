@@ -1,7 +1,9 @@
 <?php
 
-$router->register([
-    'admin_menu' => [
-        'AdminController@registerSettingsPage'
+$router->group('Admin',
+    [
+        'PagesController' => [
+            'admin_menu'  => 'addPage',
+        ]
     ]
-]);
+);

@@ -32,6 +32,14 @@ class Router
         return $router;
     }
 
+    public function group($namespace, Array $controllers)
+    {
+        foreach($controllers as $controller => $routes)
+        {
+            $this->register($namespace, $controller, $routes);
+        }
+    }
+
     /**
 	 * Delegate each route to be registered as an action
 	 *
@@ -39,17 +47,11 @@ class Router
 	 *
 	 * @return null
 	 */
-    public function register(Array $routes)
+    public function register($namespace, $controller, Array $routes)
     {
         foreach($routes as $action => $route)
         {
-            if(is_array($route)) {
-                foreach($route as $subRoot) {
-                    $this->registerRoute($action, $subRoot);
-                }
-            } else {
-                $this->registerRoute($action, $route);
-            }
+            $this->registerRoute($namespace, $controller, $action, $route);
         }
     }
 
@@ -61,11 +63,10 @@ class Router
 	 *
 	 * @return null
 	 */
-    protected function registerRoute(String $action, String $route)
+    protected function registerRoute($namespace, String $controller, String $action, String $route)
     {
-        $route = $this->namespaceRoute($route);
-        $controllerAction = explode('@', $route);
-        add_action($action, $controllerAction);
+        $controller = $this->namespaceController($namespace, $controller);
+        add_action($action, [$controller, $route]);
     }
 
     /**
@@ -75,8 +76,8 @@ class Router
 	 *
 	 * @return string
 	 */
-    protected function namespaceRoute(String $route)
+    protected function namespaceController($namespace, String $controller)
     {
-        return 'Heidi\Plugin\Controllers\\' . $route;
+        return 'Heidi\Plugin\Controllers\\' . $namespace . '\\' . $controller;
     }
 }

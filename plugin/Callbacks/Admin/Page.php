@@ -1,10 +1,10 @@
 <?php
 
-namespace Heidi\Plugin\Callbacks;
+namespace Heidi\Plugin\Callbacks\Admin;
 
 use Heidi\Plugin\Models\User;
 
-class AdminView
+class Page
 {
     public function render()
     {
