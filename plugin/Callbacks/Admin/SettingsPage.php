@@ -17,10 +17,6 @@ class SettingsPage
 
         add_action("admin_footer-{$hook_suffix}", [$this, 'settingsFooter']);
 
-        ob_start();
-        do_meta_boxes( 'toplevel_page_special-settings', 'normal', null );
-        $normalMetaboxes = ob_get_clean();
-
         view('admin.settings_page', compact('normalMetaboxes'));
     }
 

@@ -4,11 +4,13 @@ namespace Heidi\Plugin\Controllers\Admin;
 
 use Heidi\Plugin\Callbacks\Admin\SettingsPage;
 
-class PagesController
+class SettingsPageController
 {
+    protected $hook_suffix;
+
     function addPage()
     {
-        add_menu_page(
+        $this->hook_suffix = add_menu_page(
             'Special Settings',
             'Special Settings',
             'manage_options',
@@ -23,7 +25,7 @@ class PagesController
             'submitdiv',
             'Import Status',
             [new SettingsPage, 'renderImportMetaBox'],
-            'toplevel_page_special-settings',
+            $this->hook_suffix,
             'normal',
             'high'
         );
@@ -31,8 +33,7 @@ class PagesController
 
     function enqueueScripts($hook_suffix)
     {
-        $page_hook_id = 'toplevel_page_special-settings';
-        if ( $hook_suffix == $page_hook_id ){
+        if ($hook_suffix == $this->hook_suffix){
             wp_enqueue_script( 'common' );
             wp_enqueue_script( 'wp-lists' );
             wp_enqueue_script( 'postbox' );

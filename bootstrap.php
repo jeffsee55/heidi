@@ -27,10 +27,10 @@ function dd($item)
     exit();
 }
 
-function capture($output)
+function capture($function, $args)
 {
     ob_start();
-    $output;
+    call_user_func_array($function, $args);
     return ob_get_clean();
 }
 

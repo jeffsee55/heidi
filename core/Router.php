@@ -66,7 +66,7 @@ class Router
     protected function registerRoute($namespace, String $controller, String $action, String $route)
     {
         $controller = $this->namespaceController($namespace, $controller);
-        add_action($action, [$controller, $route]);
+        add_action($action, [new $controller, $route]);
     }
 
     /**

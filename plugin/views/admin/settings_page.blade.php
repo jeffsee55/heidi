@@ -22,7 +22,7 @@
                         <input type="hidden" name="page" value="<?= $_REQUEST['page']; ?>">
                         <input type="hidden" name="action" value="q4vr_general_settings">
                         <div id="postbox-container-2" class="postbox-container">
-                            {{ $normalMetaboxes }}
+                            <?php do_meta_boxes('toplevel_page_special-settings', 'normal', null) ?>
                         </div>
                         <div class="import-submit">
                             <?php do_action('q4vr_options_table_footer'); ?>
