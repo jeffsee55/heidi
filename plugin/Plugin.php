@@ -16,6 +16,4 @@ class Plugin
         return self::$singleInstance;
     }
 
-    public function __construct()
-    {}
 }

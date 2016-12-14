@@ -2,19 +2,21 @@
 
 namespace Heidi\Plugin\Controllers\Admin;
 
+use Heidi\Core\Controller;
 use Heidi\Plugin\Callbacks\Admin\SettingsPage;
 
-class SettingsPageController
+class SettingsPageController extends Controller
 {
-    protected $hook_suffix;
+    public $hook_suffix;
 
     function addPage()
     {
-        $this->hook_suffix = add_menu_page(
-            'Special Settings',
-            'Special Settings',
+        $this->hook_suffix = add_submenu_page(
+            'edit.php?post_type=vacation_rental',
+            'Q4VR Settings',
+            'Settings',
             'manage_options',
-            'special-settings',
+            'q4vr-settings',
             [new SettingsPage, 'render']
         );
     }
@@ -33,7 +35,9 @@ class SettingsPageController
 
     function enqueueScripts($hook_suffix)
     {
+        wp_register_script( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/js/admin_settings.js', ['jquery'], HEIDI_VERSION, true );
         if ($hook_suffix == $this->hook_suffix){
+            wp_enqueue_script( 'q4vr_admin_settings' );
             wp_enqueue_script( 'common' );
             wp_enqueue_script( 'wp-lists' );
             wp_enqueue_script( 'postbox' );

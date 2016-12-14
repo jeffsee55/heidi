@@ -12,7 +12,7 @@
                 <div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
                     <form id="vacation_rentals-table" action="/wp-admin/admin-post.php" method="post">
                         <div id="postbox-container-1" class="postbox-container">
-                            <?php do_meta_boxes( $page_hook_id, 'side', null ); ?>
+                            <?php do_meta_boxes( $hook_suffix, 'side', null ); ?>
                         </div>
                     </form>
                     <form id="vacation_rentals-table" action="/wp-admin/admin-post.php" method="post">
@@ -22,7 +22,7 @@
                         <input type="hidden" name="page" value="<?= $_REQUEST['page']; ?>">
                         <input type="hidden" name="action" value="q4vr_general_settings">
                         <div id="postbox-container-2" class="postbox-container">
-                            <?php do_meta_boxes('toplevel_page_special-settings', 'normal', null) ?>
+                            <?php do_meta_boxes($hook_suffix, 'normal', null) ?>
                         </div>
                         <div class="import-submit">
                             <?php do_action('q4vr_options_table_footer'); ?>
@@ -42,7 +42,7 @@
                         <input type="hidden" name="page" value="<?= $_REQUEST['page']; ?>">
                         <input type="hidden" name="action" value="q4vr_search_input_settings">
                         <div id="postbox-container-3" class="postbox-container">
-                            <?php do_meta_boxes( $page_hook_id, 'advanced', null ); ?>
+                            <?php do_meta_boxes( $hook_suffix, 'advanced', null ); ?>
                         </div>
                         <div class="import-submit">
                             <?php do_action('q4vr_options_table_footer'); ?>

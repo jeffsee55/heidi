@@ -12,14 +12,25 @@ Text Domain: heidi
 Domain Path: /languages
 */
 
-defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+defined('ABSPATH') or die('No script kiddies please!');
 
-define('HEIDI_PLUGIN_PATH', dirname(__FILE__) . '/plugin/');
+define('HEIDI_TEXT_DOMAIN', 'heidi');
+define('HEIDI_VERSION', '1.0');
+define('HEIDI_PATH', plugin_dir_path(__FILE__));
+define('HEIDI_DIR', get_site_url() . '/wp-content/plugins/heidi');
+define('HEIDI_PLUGIN_PATH', HEIDI_PATH . '/plugin/');
+define('HEIDI_PLUGIN_DIR', HEIDI_DIR . '/plugin/');
+define('HEIDI_RESOURCE_PATH', HEIDI_PATH . '/resources/');
+define('HEIDI_RESOURCE_DIR', HEIDI_DIR . '/resources/');
 
 require __DIR__ . '/bootstrap.php';
 
 $plugin = getPlugin();
 
-add_action('init', function() {
+
+
+add_action('plugins_loaded', function() {
+
     Heidi\Core\Router::load('routes.php');
+
 });

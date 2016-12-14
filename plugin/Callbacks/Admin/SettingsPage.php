@@ -2,8 +2,6 @@
 
 namespace Heidi\Plugin\Callbacks\Admin;
 
-use Heidi\Plugin\Models\User;
-
 class SettingsPage
 {
     protected $hook_suffix;
@@ -17,7 +15,7 @@ class SettingsPage
 
         add_action("admin_footer-{$hook_suffix}", [$this, 'settingsFooter']);
 
-        view('admin.settings_page', compact('normalMetaboxes'));
+        view('admin.settings_page', compact('hook_suffix'));
     }
 
     public function renderImportMetaBox()

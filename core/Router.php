@@ -49,24 +49,32 @@ class Router
 	 */
     public function register($namespace, $controller, Array $routes)
     {
+        $controller = $this->namespaceController($namespace, $controller);
+
+        $controller = new $controller;
+
         foreach($routes as $action => $route)
         {
-            $this->registerRoute($namespace, $controller, $action, $route);
+
+            if(is_array($route)) {
+
+                array_map(function($route) use ($controller, $action) {
+
+                    $this->registerRoute($action, $controller, $route);
+
+                }, $route);
+
+                return;
+
+            }
+
+            $this->registerRoute($action, $controller, $route);
         }
     }
 
-    /**
-	 * Hook in to Wordpress action hooks for every route
-	 *
-	 * @param string $action
-	 * @param string $route
-	 *
-	 * @return null
-	 */
-    protected function registerRoute($namespace, String $controller, String $action, String $route)
+    public function registerRoute(String $action, Controller $controller, String $route)
     {
-        $controller = $this->namespaceController($namespace, $controller);
-        add_action($action, [new $controller, $route]);
+        add_action($action, [$controller, $route]);
     }
 
     /**
@@ -78,6 +86,6 @@ class Router
 	 */
     protected function namespaceController($namespace, String $controller)
     {
-        return 'Heidi\Plugin\Controllers\\' . $namespace . '\\' . $controller;
+        return '\Heidi\Plugin\Controllers\\' . $namespace . '\\' . $controller;
     }
 }

@@ -38,7 +38,7 @@ use Windwalker\Renderer\BladeRenderer;
 
 function view($name, $data = [])
 {
-    $paths = [HEIDI_PLUGIN_PATH . 'views/'];
+    $paths = [HEIDI_RESOURCE_PATH . 'views/'];
 
     $renderer = new BladeRenderer($paths, array('cache_path' => __DIR__ . '/cache'));
 
