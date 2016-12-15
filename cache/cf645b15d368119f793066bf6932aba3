@@ -1,0 +1,61 @@
+<?php
+
+// $checkboxes = '';
+// foreach($row->arguments as $name => $displayName)
+// {
+//     $currentValues = $row->value;
+//     $checked = '';
+//     if(isset($row->value[$name])) {
+//         $checked = 'checked';
+//     }
+//     $checkboxes .= sprintf('<div class="checkbox"><label><input type="checkbox" %s name="%s[]" value="%s">%s</label>', $checked, $row->option, $name, $displayName);
+//     foreach($row->argumentOptions as $argumentOption)
+//     {
+//         $argumentName = $row->option . '[' . $name . '][' . $argumentOption['option'] . ']';
+//         $checkboxes .= '<label>' . $argumentOption['name'] . '</label>';
+//         $checkboxes .= '<select name="' . $argumentName . '">';
+//             $checkboxes .= '<option></option>';
+//             foreach($argumentOption['arguments'] as $argumentOptionName => $label)
+//             {
+//                 $selected = '';
+//                 if(isset($row->value[$name][$argumentOption['option']]))
+//                 {
+//                     if((int) $row->value[$name][$argumentOption['option']] == $argumentOptionName)
+//                         $selected = 'selected';
+//                 }
+//                 $checkboxes .= '<option ' . $selected . ' value="' . $argumentOptionName . '">' . $label . '</option>';
+//             }
+//         $checkboxes .= '</select>';
+//     }
+//     $checkboxes .= '</div>';
+// }
+// echo $checkboxes;
+
+?>
+<?php foreach($row->arguments as $name => $label): ?>
+    <?php $checked = isset($row->value[$name]) ? 'checked' : ''; ?>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" <?php echo $checked; ?> name="<?php echo $row->option; ?>[]" value="<?php echo $name; ?>"> <?php echo $label; ?>
+
+        </label>
+        <?php foreach($row->argumentOptions as $argumentOption): ?>
+            <?php $argumentName = $row->option . '[' . $name . '][' . $argumentOption['option'] . ']'; ?>
+            <label><?php echo $argumentOption['name']; ?></label>
+            <select name="<?php echo $argumentName; ?>">
+                <option></option>
+                <?php foreach($argumentOption['arguments'] as $argumentOptionName => $label): ?>
+                    <?php
+                    $selected = '';
+                    if(isset($row->value[$name][$argumentOption['option']]))
+                    {
+                        if((int) $row->value[$name][$argumentOption['option']] == $argumentOptionName)
+                            $selected = 'selected';
+                    }
+                     ?>
+                    <option <?php echo $selected; ?> value="<?php echo $argumentOptionName; ?>"><?php echo $label; ?></option>
+                <?php endforeach; ?>
+            </select>
+        <?php endforeach; ?>
+    </div>
+<?php endforeach; ?>

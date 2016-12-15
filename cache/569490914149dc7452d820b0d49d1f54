@@ -1,0 +1,7 @@
+<select data-select name="<?= $row->option ?>">
+    <?php $currentValue = $row->value; ?>
+    <?php foreach($row->arguments as $argumentKey => $argumentValue): ?>
+        <?php $selected = $currentValue == $argumentKey ? 'selected' : ''; ?>
+        <option <?php echo $selected; ?> value="<?php echo $argumentKey; ?>"><?php echo $argumentValue; ?></option>
+    <?php endforeach; ?>
+</select>

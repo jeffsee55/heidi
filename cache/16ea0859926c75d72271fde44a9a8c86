@@ -1,0 +1,1 @@
+<input type="text" name="<?php echo $row->option; ?>" value="<?php echo $row->value; ?>" placeholder="Text here">
