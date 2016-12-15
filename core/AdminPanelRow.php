@@ -16,11 +16,11 @@ class AdminPanelRow
 
     public $argumentOptions = [];
 
-    public function __construct(\StdClass $row, $value, $index)
+    public function __construct(\StdClass $row, $value, $index, $schema)
     {
         $this->name = $row->name;
 
-        $this->option = $this->setOption($row->schema, $index);
+        $this->option = $this->setOption($schema, $row->schema, $index);
 
         $this->type = $row->type;
 
@@ -39,9 +39,9 @@ class AdminPanelRow
         return view('core.admin_panel.' . $this->type . '_input', compact('row'));
     }
 
-    public function setOption($schema, $index)
+    public function setOption($baseSchema, $schema, $index)
     {
-        return "q4vr_search_inputs[{$index}][{$schema}]";
+        return "{$baseSchema}[{$index}][{$schema}]";
     }
 
     public function getClass($row, $value)
@@ -51,8 +51,11 @@ class AdminPanelRow
         if($row->schema != 'arguments')
             return $class;
 
-        if(empty(array_filter($value)))
-            $class .= ' hidden';
+        if($value)
+        {
+            if(empty(array_filter($value)))
+                $class .= ' hidden';
+        }
 
         return $class;
     }

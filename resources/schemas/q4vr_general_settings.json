@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Company Name",
+    "type": "text",
+    "schema": "name"
+  },
+  {
+    "name": "Phone",
+    "type": "text",
+    "schema": "phone"
+  },
+  {
+    "name": "Address",
+    "type": "text",
+    "schema": "address"
+  }
+]

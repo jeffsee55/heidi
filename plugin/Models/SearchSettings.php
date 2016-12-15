@@ -6,7 +6,7 @@ use Heidi\Core\BaseOption;
 /**
  * Class General Options.
  */
-class GeneralOptions extends BaseOption
+class SearchSettings extends BaseOption
 {
     public $list;
 
@@ -16,22 +16,28 @@ class GeneralOptions extends BaseOption
 
     public $value;
 
+    public static $schema = 'q4vr_search_settings';
+
     public function __construct()
     {
-        $this->list = get_option('q4vr_search_inputs');
+        $schema = 'q4vr_search_settings';
 
-        $this->name = 'General Information';
+        $this->list = get_option($schema);
 
-        $this->slug = 'general-information';
+        $this->name = 'Search Settings';
 
-        $this->value = get_option('q4vr_search_inputs');
+        $this->slug = 'search-settings';
+
+        $this->schema = $schema;
+
+        $this->value = get_option($schema);
     }
 
-    public function saveOptions()
+    public static function saveOptions()
     {
         $data = [];
 
-        foreach($_POST['q4vr_search_inputs'] as $row)
+        foreach($_POST[self::$schema] as $row)
         {
 
             $arguments = [];
@@ -43,13 +49,14 @@ class GeneralOptions extends BaseOption
 
                 $arguments[$key] = $value;
             }
+
             $row['arguments'] = $arguments;
 
             $data[] = $row;
         }
 
 
-        update_option('q4vr_search_inputs', $data);
+        update_option(self::$schema, $data);
 
         wp_redirect('http://plugintest.dev/wp-admin/edit.php?post_type=vacation_rental&page=q4vr-settings');
 

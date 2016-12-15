@@ -20,7 +20,7 @@
                         <?php wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false ); ?>
                         <?php wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false ); ?>
                         <input type="hidden" name="page" value="<?= $_REQUEST['page']; ?>">
-                        <input type="hidden" name="action" value="q4vr_general_settings">
+                        <input type="hidden" name="action" value="q4vr_api_settings">
                         <div id="postbox-container-2" class="postbox-container">
                             <?php do_meta_boxes($hook_suffix, 'normal', null) ?>
                         </div>
@@ -40,7 +40,7 @@
                         <?php wp_nonce_field('closedpostboxes', 'closedpostboxesnonce', false ); ?>
                         <?php wp_nonce_field('meta-box-order', 'meta-box-order-nonce', false ); ?>
                         <input type="hidden" name="page" value="<?= $_REQUEST['page']; ?>">
-                        <input type="hidden" name="action" value="q4vr_search_input_settings">
+                        <input type="hidden" name="action" value="q4vr_search_settings">
                         <div id="postbox-container-3" class="postbox-container">
                             <?php do_meta_boxes( $hook_suffix, 'advanced', null ); ?>
                         </div>

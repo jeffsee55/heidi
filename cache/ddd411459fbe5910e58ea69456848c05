@@ -1,8 +1,0 @@
-<?php $__env->startSection('content'); ?>
-    <h1>Hello</h1>
-    <p>This is my body content.</p>
-    <?php echo isset($test) ? $test : 'Default'; ?>
-
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('admin.admin_layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

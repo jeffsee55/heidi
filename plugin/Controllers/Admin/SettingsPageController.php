@@ -5,7 +5,9 @@ namespace Heidi\Plugin\Controllers\Admin;
 use Heidi\Core\Controller;
 use Heidi\Core\AdminPanel;
 use Heidi\Plugin\Callbacks\Admin\SettingsPage;
-use Heidi\Plugin\Models\GeneralOptions;
+use Heidi\Plugin\Models\SearchSettings;
+use Heidi\Plugin\Models\ApiSettings;
+use Heidi\Plugin\Models\GeneralSettings;
 
 class SettingsPageController extends Controller
 {
@@ -25,7 +27,8 @@ class SettingsPageController extends Controller
 
     function addMetaBoxes()
     {
-        AdminPanel::addMetaBoxes(new GeneralOptions, $this->hook_suffix);
+        AdminPanel::addMetaBoxes(new ApiSettings, $this->hook_suffix);
+        AdminPanel::addMetaBoxes(new SearchSettings, $this->hook_suffix, 'advanced');
 
         add_meta_box(
             'submitdiv',
@@ -44,24 +47,16 @@ class SettingsPageController extends Controller
             'side',
             'high'
         );
-
-        add_meta_box(
-            'q4vr-search-box',
-            'Search Inputs',
-            [new SettingsPage, 'generalBox'],
-            $this->hook_suffix,
-            'advanced',
-            'high'
-        );
     }
 
     function enqueueScripts($hook_suffix)
     {
-        wp_register_script( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/js/admin_settings.js', ['jquery'], HEIDI_VERSION, true );
-
-        wp_register_style( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/css/admin_settings.css', [], HEIDI_VERSION);
 
         if ($hook_suffix == $this->hook_suffix){
+
+            wp_register_script( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/js/admin_settings.js', ['jquery'], HEIDI_VERSION, true );
+
+            wp_register_style( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/css/admin_settings.css', [], HEIDI_VERSION);
 
             wp_enqueue_script( 'q4vr_admin_settings' );
 
@@ -75,9 +70,18 @@ class SettingsPageController extends Controller
         }
     }
 
-    public function saveOptions()
+    public function saveGeneralSettings()
     {
-        $generalOptions = new GeneralOptions;
-        $generalOptions->saveOptions($_POST);
+        GeneralSettings::saveOptions($_POST);
+    }
+
+    public function saveSearchSettings()
+    {
+        SearchSettings::saveOptions($_POST);
+    }
+
+    public function saveApiSettings()
+    {
+        ApiSettings::saveOptions($_POST);
     }
 }
