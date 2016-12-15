@@ -46,10 +46,14 @@ class AdminPanelRow
 
     public function getClass($row, $value)
     {
+        $class = $row->schema;
+
         if($row->schema != 'arguments')
-            return $row->schema;
+            return $class;
 
         if(empty(array_filter($value)))
-            return $row->schema . ' hidden';
+            $class .= ' hidden';
+
+        return $class;
     }
 }

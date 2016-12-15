@@ -24,6 +24,21 @@ section:first-child {
   padding-bottom: 20px;
 }
 
+table.q4vr-admin-panel {
+    background: white;
+    overflow: hidden;
+    margin-bottom: -12px !important;
+    margin-top: -6px;
+    margin-left: -12px;
+    border: none;
+}
+
+th.fields-label {
+    background: #F9F9F9;
+    border-right: 1px solid #f1f1f1;
+    padding: 18px 12px;
+}
+
 label {
   display: inline-block;
   width: 30px;
@@ -33,4 +48,38 @@ label {
 label:first-child {
   width: 200px;
   text-align: left;
+}
+
+.q4vr-icon {
+	width: 24px;
+	height: 24px;
+	line-height: 18px;
+	font-size: 18px;
+	color: #999;
+	border-color: #BBB;
+	background-color: #fff;
+	display: inline-block;
+  cursor: pointer;
+}
+
+.q4vr-icon:before {
+    text-align: center;
+	border: 1px solid;
+	border-radius: 50%;
+	width: 19px;
+	height: 19px;
+	display: inline-block;
+}
+
+.q4vr-icon:hover:before {
+	background: tomato;
+	color: white;
+}
+
+.q4vr-icon.q4vr-plus:before {
+		content: "+"
+	}
+
+.q4vr-icon.q4vr-minus:before {
+	content: "-"
 }

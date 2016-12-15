@@ -6,7 +6,7 @@
     <tbody>
         <?php foreach($panel->rows as $row): ?>
         <tr class="<?php echo $row->class; ?>">
-            <th><?php echo $row->name; ?></th>
+            <th class="fields-label"><?php echo $row->name; ?></th>
             <td><?php echo $row->layout(); ?></td>
         </tr>
         <?php endforeach; ?>

@@ -6,7 +6,7 @@
     <tbody>
         @foreach($panel->rows as $row)
         <tr class="{{ $row->class }}">
-            <th>{{ $row->name }}</th>
+            <th class="fields-label">{{ $row->name }}</th>
             <td>{{ $row->layout() }}</td>
         </tr>
         @endforeach
