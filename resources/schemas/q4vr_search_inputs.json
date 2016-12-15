@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Label",
+    "type": "text",
+    "schema": "label"
+  },
+  {
+    "name": "Show Label",
+    "type": "Select",
+    "schema": "show_label",
+    "arguments": [
+      "Don't show label",
+      "Show Label"
+    ]
+  },
+  {
+    "name": "Name",
+    "schema": "name",
+    "type": "text"
+  },
+  {
+    "name": "Input Type",
+    "type": "select",
+    "schema": "input_type",
+    "arguments": {
+      "text": "Text",
+      "select": "Select",
+      "checkbox": "Checkbox",
+      "calendar": "Calendar",
+      "link": "Link",
+      "widget": "Widget",
+      "button": "Button",
+      "filter": "Filter"
+    }
+  },
+  {
+    "name": "Arguments",
+    "type": "multi",
+    "schema": "arguments"
+  },
+  {
+    "name": "Advanced",
+    "type": "select",
+    "schema": "advanced",
+    "arguments": [
+      "Show in regular form",
+      "Show in advanced fields"
+    ]
+  },
+  {
+    "name": "Layouts",
+    "type": "checkbox",
+    "schema": "layouts",
+    "arguments": {
+      "universal": "Navigation",
+      "shortcode": "Shortcode",
+      "single": "Single",
+      "multiunit": "Multiunit"
+    },
+    "argument_options": [
+      {
+        "name": "L",
+        "option": "large",
+        "type": "select",
+        "arguments": {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12}
+      },
+      {
+        "name": "M",
+        "option": "medium",
+        "type": "select",
+        "arguments": {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12}
+      },
+      {
+        "name": "S",
+        "option": "small",
+        "type": "select",
+        "arguments": {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12}
+      },
+      {
+        "name": "XS",
+        "option": "x-small",
+        "type": "select",
+        "arguments": {"1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "11": 11, "12": 12}
+      }
+    ]
+  }
+]

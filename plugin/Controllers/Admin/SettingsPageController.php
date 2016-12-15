@@ -74,4 +74,10 @@ class SettingsPageController extends Controller
             wp_enqueue_script( 'postbox' );
         }
     }
+
+    public function saveOptions()
+    {
+        $generalOptions = new GeneralOptions;
+        $generalOptions->saveOptions($_POST);
+    }
 }
