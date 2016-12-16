@@ -1,17 +1,41 @@
 [
-  {
-    "name": "VR API URL",
-    "type": "text",
-    "schema": "api_url"
-  },
-  {
-    "name": "VR API Client ID",
-    "type": "wysiwyg",
-    "schema": "api_client_id"
-  },
-  {
-    "name": "VR API Secret",
-    "type": "image",
-    "schema": "api_secret"
-  }
+    {
+        "name": "Title",
+        "type": "text",
+        "schema": "title"
+    },
+    {
+        "name": "Show / Hide",
+        "type": "select",
+        "schema": "show",
+        "arguments": [
+            "Show",
+            "Hide"
+        ]
+    },
+    {
+        "name": "SEO Slug",
+        "type": "text",
+        "schema": "slug"
+    },
+    {
+        "name": "Search String",
+        "type": "text",
+        "schema": "query"
+    },
+    {
+        "name": "Description",
+        "type": "wysiwyg",
+        "schema": "description"
+    },
+    {
+        "name": "Hero Graphic",
+        "type": "image",
+        "schema": "hero_graphic"
+    },
+    {
+        "name": "Featured Image",
+        "type": "image",
+        "schema": "featured_image"
+    }
 ]

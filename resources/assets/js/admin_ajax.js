@@ -35,6 +35,7 @@ jQuery(document).ready(function ($) {
 
 
 	function addRemoveButtons() {
+
 		$('.q4vr-admin-panel-can-add').each(function() {
 			if($(this).find('.admin-panel-remove').length === 0)
 			{
