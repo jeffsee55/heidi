@@ -28,6 +28,7 @@ $router->group('Admin',
             'add_meta_boxes_page' => 'addMetaBoxes',
             'post_edit_form_tag' => 'addMultipart',
             'admin_enqueue_scripts' => 'enqueueScripts',
+            'save_post' => 'saveMeta'
         ]
     ]
 );

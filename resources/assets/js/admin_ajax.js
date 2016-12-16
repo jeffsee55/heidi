@@ -1,13 +1,14 @@
 jQuery(document).ready(function ($) {
 
-	function ajaxAddAdminPanel(count) {
+	function ajaxAddAdminPanel(count, schema) {
 
 		$.ajax({
 			url: ajaxurl,
             dataType: 'json',
 			data: {
 				action: 'add_admin_panel',
-				index: count
+				index: count,
+				schema: schema
 			},
 			success: renderPanel
 		});
@@ -17,28 +18,32 @@ jQuery(document).ready(function ($) {
 
 		event.preventDefault();
 
-        var count = $('.can-add-admin-panel').find('.q4vr-admin-panel').length;
+        var count = $('.q4vr-admin-panel-can-add').length;
 
-		ajaxAddAdminPanel(count);
+		var schema = $(this).data('schema');;
+
+		ajaxAddAdminPanel(count, schema);
 
 	});
 
     function renderPanel(response)
     {
-        $('.can-add-admin-panel').find('.meta-box-sortables').append(response.data);
+        $(response.data).insertBefore($('#add-more-panel'));
+
 		addRemoveButtons();
     }
 
 
 	function addRemoveButtons() {
-		$('.can-add-admin-panel').find('.postbox').each(function() {
-			$(this).find('h2.hndle').append('<a class="admin-panel-remove" href="#">Remove</a>');
+		$('.q4vr-admin-panel-can-add').each(function() {
+			if($(this).find('.admin-panel-remove').length === 0)
+			{
+				$(this).find('h2.hndle').append('<a class="admin-panel-remove" href="#">Remove</a>');
+			}
 		});
 
 		$('.admin-panel-remove').click(function(e) {
 			e.preventDefault();
-
-			console.log('hi');
 
 			$(this).parents('.postbox').remove();
 		});

@@ -20,24 +20,20 @@ class SplashSettings extends BaseOption
 
     public function __construct()
     {
+        global $post;
+
         $this->name = 'Splash Settings';
 
         $this->slug = 'splash-settings';
 
         $this->schema = self::$schema;
 
-        $this->value = get_option(self::$schema);
+        $this->value = get_post_meta($post->ID, self::$schema, true);
     }
 
-    public static function saveOptions()
+    public static function saveMeta($post_id)
     {
-        dd($_GET);
-
-        update_option(self::$schema, $_POST[self::$schema]);
-
-        wp_redirect('http://plugintest.dev/wp-admin/post.php?post=2&action=edit');
-
-        exit();
+        update_post_meta($post_id, self::$schema, $_POST[self::$schema]);
     }
 
 }

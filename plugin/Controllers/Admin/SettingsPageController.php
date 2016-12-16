@@ -29,7 +29,7 @@ class SettingsPageController extends Controller
     {
         AdminPanel::addMetaBoxes(new ApiSettings, $this->hook_suffix);
 
-        AdminPanel::addMetaBoxes(new SearchSettings, $this->hook_suffix, 'advanced');
+        AdminPanel::addMetaBoxes(new SearchSettings, $this->hook_suffix, 'advanced', true);
 
         add_meta_box(
             'submitdiv',
@@ -102,7 +102,7 @@ class SettingsPageController extends Controller
 
         ob_start(); ?>
 
-        <div class="postbox ">
+        <div class="postbox q4vr-admin-panel-can-add">
 
             <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">New Panel</span><span class="toggle-indicator" aria-hidden="true"></span></button>
 
@@ -110,7 +110,7 @@ class SettingsPageController extends Controller
 
             <div class="inside">
 
-            <?php (new AdminPanel('q4vr_search_settings'))->render(null, $callback_args); ?>
+            <?php (new AdminPanel($_GET['schema']))->render(null, $callback_args); ?>
 
             </div>
 

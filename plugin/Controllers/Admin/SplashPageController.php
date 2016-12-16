@@ -51,7 +51,7 @@ class SplashPageController extends Controller
 
         if($customTemplate === 'splash-page-template.php')
         {
-            AdminPanel::addMetaBoxes(new SplashSettings, 'page', 'advanced');
+            AdminPanel::addMetaBoxes(new SplashSettings, 'page', 'advanced', true);
         }
     }
 
@@ -86,5 +86,10 @@ class SplashPageController extends Controller
             wp_enqueue_script( 'postbox' );
         }
 
+    }
+
+    public function saveMeta($post_id)
+    {
+        SplashSettings::saveMeta($post_id);
     }
 }

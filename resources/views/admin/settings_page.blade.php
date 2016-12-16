@@ -47,7 +47,6 @@
                         </div>
                         <div class="import-submit">
                             <?php do_action('q4vr_options_table_footer'); ?>
-                            <a id="add_table" class="button button-large">Add Search Input</a>
                             <input style="float: right" class="button button-primary button-large" type="submit" value="Submit">
                             <div style="clear:both"></div>
                         </div>

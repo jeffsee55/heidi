@@ -13,7 +13,7 @@ class AdminPanel
         $this->schema = $schema;
     }
 
-    public static function addMetaBoxes(BaseOption $class, String $screen, $context = 'normal')
+    public static function addMetaBoxes(BaseOption $class, String $screen, $context = 'normal', $canAdd = false)
     {
         if(! empty($class->value)) {
 
@@ -23,8 +23,10 @@ class AdminPanel
                 if($option['label'])
                     $boxName = $option['label'];
 
+                $boxId = $class->slug . '-' . $index;
+
                 add_meta_box(
-                    $class->slug . '-' . $index,
+                    $boxId,
                     $boxName,
                     [new static($class->schema), 'render'],
                     $screen,
@@ -32,6 +34,11 @@ class AdminPanel
                     'default',
                     [$option, $index]
                 );
+
+                if($canAdd)
+                {
+                    add_filter( "postbox_classes_{$screen}_{$boxId}", [new static($class->schema), "addMetaboxClasses"] );
+                }
 
             }
 
@@ -47,6 +54,21 @@ class AdminPanel
                 [null, 0]
             );
 
+            if($canAdd)
+            {
+                add_filter( "postbox_classes_{$screen}_{$boxId}", [new static($class->schema), "addMetaboxClasses"] );
+            }
+        }
+        if($canAdd)
+        {
+            add_meta_box(
+                'add-more-panel',
+                'Add More',
+                [new static($class->schema), 'renderAddMore'],
+                $screen,
+                $context,
+                'default'
+            );
         }
     }
 
@@ -70,6 +92,20 @@ class AdminPanel
         }
 
         view('core.admin_panel', compact('panel'));
+    }
+
+    public function addMetaboxClasses($classes = [])
+    {
+        $classes[] = sanitize_html_class('q4vr-admin-panel-can-add');
+
+        return $classes;
+    }
+
+    public function renderAddMore()
+    {
+        $schema = $this->schema;
+        
+        view('core.admin_panel.add_more', compact('schema'));
     }
 
     private function getSchema(String $file)
