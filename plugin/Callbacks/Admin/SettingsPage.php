@@ -3,6 +3,7 @@
 namespace Heidi\Plugin\Callbacks\Admin;
 
 use Heidi\Core\Callback;
+use Heidi\Plugin\Models\ApiClient as Client;
 
 class SettingsPage extends Callback
 {
@@ -27,7 +28,16 @@ class SettingsPage extends Callback
 
     public function importBox()
     {
-        view('admin.settings.import_box');
+        $response = Client::get('units');
+
+        if(property_exists($response, 'units'))
+        {
+
+            $unit_codes = array_pluck($response->units, 'unit_code');
+
+            view('admin.settings.import_box', compact('unit_codes'));
+
+        }
     }
 
     public function apiBox()
