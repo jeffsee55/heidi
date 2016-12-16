@@ -1,16 +1,47 @@
 <?php
 
+$router->group('Api',
+    [
+        'UnitsController' => [
+            'pre_get_posts'     => 'searchApi',
+            'wp_ajax_load_more' => 'loadMore',
+            'wp'                => ['addUnits', 'getUnit'],
+            'init'              => 'addQueryVars',
+        ],
+        'AuthController' => [
+            'admin_post_q4vr_authorize'         => 'authorize',
+            'admin_post_nopriv_q4vr_callback'   => 'callback',
+            'admin_post_q4vr_callback'          => 'callback'
+        ],
+        'StayController' => [
+            'wp_ajax_nopriv_q4vr_stay'  => 'ajaxGetStay',
+            'wp_ajax_q4vr_stay'         => 'ajaxGetStay',
+        ],
+        'CalendarController' => [
+            'wp_ajax_nopriv_q4vr_calendar'  => 'getCalendar',
+            'wp_ajax_q4vr_calendar'         => 'getCalendar'
+        ],
+        'ReservationsController' => [
+            'wp'                                        => 'reservationStay',
+            'wp_ajax_q4vr_create_reservation'           => 'createReservation',
+            'wp_ajax_nopriv_q4vr_create_reservation'    => 'createReservation',
+            'admin_post_q4vr_create_reservation'        => 'createReservation',
+            'admin_post_nopriv_q4vr_create_reservation' => 'createReservation'
+        ]
+    ]
+);
+
 $router->group('Admin',
     [
         'VacationRentalsController' => [
             'template_include' => 'loadTemplates',
             'q4vr_single_page' => 'renderSingle',
-            'q4vr_archive_page' => 'renderArchive',
             'init' => [
                 'unregisterAccommodations',
                 'registerPostType',
                 'registerTaxonomies',
-            ]
+            ],
+            'q4vr_archive_page' => 'renderArchive',
         ],
         'SettingsPageController' => [
             'admin_menu'  => 'addPage',

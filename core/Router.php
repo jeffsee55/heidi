@@ -64,7 +64,7 @@ class Router
 
                 }, $route);
 
-                return;
+                continue;
 
             }
 
