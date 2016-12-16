@@ -73,5 +73,41 @@ class VacationRentalsController extends Controller
         );
     }
 
+    public function loadTemplates( $template )
+    {
+        global $wp_query, $post;
+
+        $post_type = 'vacation_rental';
+
+        if ( is_post_type_archive( $post_type ) &&
+                ! file_exists( get_stylesheet_directory() . '/archive-vacation_rental.php' ) )
+        {
+
+            $template = HEIDI_RESOURCE_PATH . 'views/templates/archive-vacation_rental.php';
+
+        } elseif ( is_singular( $post_type ) &&
+                ! file_exists( get_stylesheet_directory() . '/single-vacation_rental.php' ) )
+        {
+
+            $template = HEIDI_RESOURCE_PATH . 'views/templates/single-vacation_rental.php';
+
+        }
+
+        return $template;
+    }
+
+    public function renderSingle()
+    {
+        global $post;
+
+        return view('single', compact('post'));
+    }
+
+    public function renderArchive()
+    {
+        global $post;
+
+        return view('archive', compact('post'));
+    }
 
 }
