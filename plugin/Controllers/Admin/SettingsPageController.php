@@ -56,13 +56,17 @@ class SettingsPageController extends Controller
 
             wp_register_script( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/js/admin_settings.js', ['jquery'], HEIDI_VERSION, true );
 
-            wp_register_script( 'q4vr_media', HEIDI_RESOURCE_DIR . 'assets/js/admin_media.js', ['jquery'], HEIDI_VERSION, true );
+            wp_register_script( 'q4vr_admin_media', HEIDI_RESOURCE_DIR . 'assets/js/admin_media.js', ['jquery'], HEIDI_VERSION, true );
+
+            wp_register_script( 'q4vr_admin_ajax', HEIDI_RESOURCE_DIR . 'assets/js/admin_ajax.js', ['jquery'], HEIDI_VERSION, true );
 
             wp_register_style( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/css/admin_settings.css', [], HEIDI_VERSION);
 
             wp_enqueue_script( 'q4vr_admin_settings' );
 
-            wp_enqueue_script( 'q4vr_media' );
+            wp_enqueue_script( 'q4vr_admin_media' );
+
+            wp_enqueue_script( 'q4vr_admin_ajax' );
 
             wp_enqueue_style( 'q4vr_admin_settings' );
 
@@ -89,5 +93,21 @@ class SettingsPageController extends Controller
     public function saveApiSettings()
     {
         ApiSettings::saveOptions($_POST);
+    }
+
+    public function addAdminPanel()
+    {
+        $callback_args['args'] = [null, $_GET['index']];
+        ob_start(); ?>
+        <div class="postbox ">
+            <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">New Panel</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+            <h2 class="hndle ui-sortable-handle"><span>New Panel</span></h2>
+            <div class="inside">
+            <?php (new AdminPanel('q4vr_search_settings'))->render(null, $callback_args); ?>
+            </div>
+        </div>
+        <?php
+        $html = ob_get_clean();
+        wp_send_json_success($html);
     }
 }

@@ -1,0 +1,7 @@
+<div id="search-settings-<?php echo $index; ?>" class="postbox ">
+    <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">Toggle panel: Calendar</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+    <h2 class="hndle ui-sortable-handle"><span>Calendar</span></h2>
+    <div class="inside">
+        @includes('core.admin_panel');
+    </div>
+</div>

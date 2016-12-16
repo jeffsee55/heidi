@@ -18,7 +18,8 @@ $router->group('Admin',
             'admin_enqueue_scripts' => 'enqueueScripts',
             'admin_post_q4vr_general_settings' => 'saveGeneralSettings',
             'admin_post_q4vr_search_settings' => 'saveSearchSettings',
-            'admin_post_q4vr_api_settings' => 'saveApiSettings'
+            'admin_post_q4vr_api_settings' => 'saveApiSettings',
+            'wp_ajax_add_admin_panel' => 'addAdminPanel'
         ],
         'SplashPageController' => [
             'theme_page_templates' => 'registerSplashPage',

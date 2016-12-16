@@ -15,7 +15,6 @@ jQuery(document).ready(function ($) {
 
 	})
 
-
 	$('.checkbox input[type="checkbox"]').change(function() {
 
 		toggleCheckbox(this);

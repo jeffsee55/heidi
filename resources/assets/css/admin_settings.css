@@ -83,3 +83,11 @@ label:first-child {
 .q4vr-icon.q4vr-minus:before {
 	content: "-"
 }
+
+.admin-panel-remove {
+    padding-left: 20px;
+    font-size: 12px;
+    display: inline-block;
+    height: 18px;
+    vertical-align: middle;
+}
