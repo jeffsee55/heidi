@@ -25,7 +25,9 @@ $router->group('Admin',
             'theme_page_templates' => 'registerSplashPage',
             'template_include' => 'loadSplashPage',
             'q4vr_splash_page' => 'renderSplash',
-            'add_meta_boxes_page' => 'addMetaBoxes'
+            'add_meta_boxes_page' => 'addMetaBoxes',
+            'post_edit_form_tag' => 'addMultipart',
+            'admin_enqueue_scripts' => 'enqueueScripts',
         ]
     ]
 );

@@ -28,6 +28,7 @@ class SettingsPageController extends Controller
     function addMetaBoxes()
     {
         AdminPanel::addMetaBoxes(new ApiSettings, $this->hook_suffix);
+
         AdminPanel::addMetaBoxes(new SearchSettings, $this->hook_suffix, 'advanced');
 
         add_meta_box(
@@ -51,17 +52,17 @@ class SettingsPageController extends Controller
 
     function enqueueScripts($hook_suffix)
     {
+        //TODO Register these scripts somewhere that makes sense
+        wp_register_script( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/js/admin_settings.js', ['jquery'], HEIDI_VERSION, true );
 
-        if ($hook_suffix == $this->hook_suffix){
+        wp_register_script( 'q4vr_admin_media', HEIDI_RESOURCE_DIR . 'assets/js/admin_media.js', ['jquery'], HEIDI_VERSION, true );
 
-            wp_register_script( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/js/admin_settings.js', ['jquery'], HEIDI_VERSION, true );
+        wp_register_script( 'q4vr_admin_ajax', HEIDI_RESOURCE_DIR . 'assets/js/admin_ajax.js', ['jquery'], HEIDI_VERSION, true );
 
-            wp_register_script( 'q4vr_admin_media', HEIDI_RESOURCE_DIR . 'assets/js/admin_media.js', ['jquery'], HEIDI_VERSION, true );
+        wp_register_style( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/css/admin_settings.css', [], HEIDI_VERSION);
 
-            wp_register_script( 'q4vr_admin_ajax', HEIDI_RESOURCE_DIR . 'assets/js/admin_ajax.js', ['jquery'], HEIDI_VERSION, true );
-
-            wp_register_style( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/css/admin_settings.css', [], HEIDI_VERSION);
-
+        if ($hook_suffix == $this->hook_suffix)
+        {
             wp_enqueue_script( 'q4vr_admin_settings' );
 
             wp_enqueue_script( 'q4vr_admin_media' );
@@ -98,16 +99,27 @@ class SettingsPageController extends Controller
     public function addAdminPanel()
     {
         $callback_args['args'] = [null, $_GET['index']];
+
         ob_start(); ?>
+
         <div class="postbox ">
+
             <button type="button" class="handlediv button-link" aria-expanded="true"><span class="screen-reader-text">New Panel</span><span class="toggle-indicator" aria-hidden="true"></span></button>
+
             <h2 class="hndle ui-sortable-handle"><span>New Panel</span></h2>
+
             <div class="inside">
+
             <?php (new AdminPanel('q4vr_search_settings'))->render(null, $callback_args); ?>
+
             </div>
+
         </div>
+
         <?php
+
         $html = ob_get_clean();
+
         wp_send_json_success($html);
     }
 }
