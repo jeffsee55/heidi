@@ -1,0 +1,17 @@
+[
+  {
+    "name": "VR API URL",
+    "type": "text",
+    "schema": "api_url"
+  },
+  {
+    "name": "VR API Client ID",
+    "type": "wysiwyg",
+    "schema": "api_client_id"
+  },
+  {
+    "name": "VR API Secret",
+    "type": "image",
+    "schema": "api_secret"
+  }
+]

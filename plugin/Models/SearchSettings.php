@@ -51,7 +51,6 @@ class SearchSettings extends BaseOption
             $data[] = $row;
         }
 
-
         update_option(self::$schema, $data);
 
         wp_redirect('http://plugintest.dev/wp-admin/edit.php?post_type=vacation_rental&page=q4vr-settings');

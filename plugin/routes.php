@@ -25,6 +25,7 @@ $router->group('Admin',
             'theme_page_templates' => 'registerSplashPage',
             'template_include' => 'loadSplashPage',
             'q4vr_splash_page' => 'renderSplash',
+            'add_meta_boxes_page' => 'addMetaBoxes'
         ]
     ]
 );

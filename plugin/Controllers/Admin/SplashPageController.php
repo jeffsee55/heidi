@@ -3,6 +3,8 @@
 namespace Heidi\Plugin\Controllers\Admin;
 
 use Heidi\Core\Controller;
+use Heidi\Core\AdminPanel;
+use Heidi\Plugin\Models\SplashSettings;
 
 class SplashPageController extends Controller
 {
@@ -39,5 +41,10 @@ class SplashPageController extends Controller
         global $post;
 
         return view('splash', compact('post'));
+    }
+
+    function addMetaBoxes()
+    {
+        AdminPanel::addMetaBoxes(new SplashSettings, 'page', 'advanced');
     }
 }
