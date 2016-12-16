@@ -20,17 +20,13 @@ class ApiSettings extends BaseOption
 
     public function __construct()
     {
-        $schema = 'q4vr_api_settings';
-
-        $this->list = get_option($schema);
-
         $this->name = 'API Settings';
 
         $this->slug = 'api-settings';
 
-        $this->schema = $schema;
+        $this->schema = self::$schema;
 
-        $this->value = get_option($schema);
+        $this->value = get_option(self::$schema);
     }
 
     public static function saveOptions()

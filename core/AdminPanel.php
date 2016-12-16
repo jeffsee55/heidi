@@ -19,14 +19,17 @@ class AdminPanel
 
             foreach($class->value as $index => $option)
             {
+                $boxName = $class->name;
+                if($option['label'])
+                    $boxName = $option['label'];
 
                 add_meta_box(
                     $class->slug . '-' . $index,
-                    $option['label'],
+                    $boxName,
                     [new static($class->schema), 'render'],
                     $screen,
                     $context,
-                    'high',
+                    'default',
                     [$option, $index]
                 );
 

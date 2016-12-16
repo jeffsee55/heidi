@@ -20,17 +20,13 @@ class GeneralSettings extends BaseOption
 
     public function __construct()
     {
-        $schema = 'q4vr_general_settings';
-
-        $this->list = get_option($schema);
-
         $this->name = 'General Information';
 
         $this->slug = 'general-information';
 
-        $this->schema = $schema;
+        $this->schema = self::$schema;
 
-        $this->value = get_option($schema);
+        $this->value = get_option(self::$schema);
     }
 
     public static function saveOptions()

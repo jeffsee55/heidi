@@ -20,17 +20,13 @@ class SearchSettings extends BaseOption
 
     public function __construct()
     {
-        $schema = 'q4vr_search_settings';
-
-        $this->list = get_option($schema);
-
         $this->name = 'Search Settings';
 
         $this->slug = 'search-settings';
 
-        $this->schema = $schema;
+        $this->schema = self::$schema;
 
-        $this->value = get_option($schema);
+        $this->value = get_option(self::$schema);
     }
 
     public static function saveOptions()

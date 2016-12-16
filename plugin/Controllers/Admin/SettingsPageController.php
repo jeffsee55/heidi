@@ -56,11 +56,17 @@ class SettingsPageController extends Controller
 
             wp_register_script( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/js/admin_settings.js', ['jquery'], HEIDI_VERSION, true );
 
+            wp_register_script( 'q4vr_media', HEIDI_RESOURCE_DIR . 'assets/js/admin_media.js', ['jquery'], HEIDI_VERSION, true );
+
             wp_register_style( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/css/admin_settings.css', [], HEIDI_VERSION);
 
             wp_enqueue_script( 'q4vr_admin_settings' );
 
+            wp_enqueue_script( 'q4vr_media' );
+
             wp_enqueue_style( 'q4vr_admin_settings' );
+
+            wp_enqueue_media();
 
             wp_enqueue_script( 'common' );
 
