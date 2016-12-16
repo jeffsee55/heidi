@@ -34,8 +34,9 @@ $router->group('Api',
 $router->group('Admin',
     [
         'VacationRentalsController' => [
-            'template_include' => 'loadTemplates',
-            'q4vr_single_page' => 'renderSingle',
+            'template_include'                  => 'loadTemplates',
+            'q4vr_single_page'                  => 'renderSingle',
+            'save_post_vacation_rental'         => 'saveMeta',
             'init' => [
                 'unregisterAccommodations',
                 'registerPostType',

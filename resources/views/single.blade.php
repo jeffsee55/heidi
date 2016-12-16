@@ -1,1 +1,5 @@
-{{ $post->post_title }}
+{{ $unit->name }}
+<br>
+{{ $unit->headline }}
+<br>
+{{ $unit->default_image_url }}

@@ -4,6 +4,7 @@ namespace Heidi\Plugin\Callbacks\Api;
 
 use Heidi\Core\Callback;
 use Heidi\Plugin\Models\ApiClient as Client;
+use Heidi\Plugin\Models\VacationRental;
 
 class Unit extends Callback
 {
@@ -27,8 +28,10 @@ class Unit extends Callback
 
         $unitCode = get_post_meta($post->ID, 'unit_code', true);
 
-        $response = Client::get('units/103');
+        $unit = Client::get('units/103');
 
-        dd($response);
+        $unit = new VacationRental($post, $unit);
+
+        view('single', compact('unit'));
     }
 }

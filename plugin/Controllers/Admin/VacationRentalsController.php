@@ -9,10 +9,6 @@ use Heidi\Plugin\Callbacks\Admin\VacationRentalPage;
 
 class VacationRentalsController extends Controller
 {
-    protected $metaFields = [
-        'unit_code' => 'Unit Code'
-    ];
-
     function __construct()
     {
         add_action('add_meta_boxes_vacation_rental',  [$this, 'registerMetaBoxes']);
@@ -68,8 +64,7 @@ class VacationRentalsController extends Controller
             [new VacationRentalPage, 'render'],
             null,
             'side',
-            'default',
-            $this->metaFields
+            'default'
         );
     }
 
@@ -108,6 +103,18 @@ class VacationRentalsController extends Controller
         global $post;
 
         return view('archive', compact('post'));
+    }
+
+    public function saveMeta($post_id) {
+
+        // prevent quickedit from remove meta fields
+        if(! isset($_POST['_inline_edit']))
+            return;
+
+        if (wp_verify_nonce($_POST['_inline_edit'], 'inlineeditnonce'))
+            return;
+
+        update_post_meta( $post_id, 'unit_code', $_POST['unit_code'] );
     }
 
 }

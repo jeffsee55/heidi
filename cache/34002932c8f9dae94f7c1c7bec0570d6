@@ -1,2 +1,8 @@
-<?php echo $post->post_title; ?>
+<?php echo $unit->name; ?>
+
+<br>
+<?php echo $unit->headline; ?>
+
+<br>
+<?php echo $unit->default_image_url; ?>
 

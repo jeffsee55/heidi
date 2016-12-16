@@ -26,8 +26,16 @@ class Search extends Callback
         $queryString = self::buildQueryString($wp_query);
 
         $response = Client::get('units', $queryString);
-
         dd($response);
+
+        if(property_exists($response, 'units'))
+        {
+            $units = array_map(function($unit) {
+                new VacationRental($post, $unit);
+            }, $response->units);
+        }
+
+        view('single', compact('units'));
     }
 
     public static function buildQueryString($wp_query)
