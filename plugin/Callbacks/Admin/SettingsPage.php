@@ -28,7 +28,7 @@ class SettingsPage extends Callback
 
     public function importBox()
     {
-        $response = Client::get('units');
+        $response = Client::get('units', 'limit=-1');
 
         if(property_exists($response, 'units'))
         {

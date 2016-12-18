@@ -117,4 +117,40 @@ class VacationRentalsController extends Controller
         update_post_meta( $post_id, 'unit_code', $_POST['unit_code'] );
     }
 
+    public function importUnits()
+    {
+        $this->deleteExistingUnits();
+
+        $unitCodes = $_POST['unit_codes'];
+
+        array_map(function($unitCode) {
+
+            $args = [
+                'post_title' => $unitCode,
+                'post_type' => 'vacation_rental',
+                'post_status' => 'publish',
+                'meta_input' => [
+                    'unit_code' => $unitCode
+                ]
+            ];
+
+            wp_insert_post($args);
+
+        }, $unitCodes);
+
+        wp_redirect('/wp-admin/edit.php?post_type=vacation_rental');
+
+        exit();
+    }
+
+    public function deleteExistingUnits()
+    {
+        $query = new \WP_Query(['post_type' => 'vacation_rental', 'posts_per_page' => -1]);
+
+        array_map(function($post) {
+
+            wp_delete_post($post->ID, true);
+
+        }, $query->get_posts());
+    }
 }

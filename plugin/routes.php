@@ -37,6 +37,7 @@ $router->group('Admin',
             'template_include'                  => 'loadTemplates',
             'q4vr_single_page'                  => 'renderSingle',
             'save_post_vacation_rental'         => 'saveMeta',
+            'admin_post_q4vr_import'            => 'importUnits',
             'init' => [
                 'unregisterAccommodations',
                 'registerPostType',
