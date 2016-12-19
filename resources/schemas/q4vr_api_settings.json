@@ -11,7 +11,7 @@
   },
   {
     "name": "VR API Secret",
-    "type": "image",
+    "type": "text",
     "schema": "api_secret"
   }
 ]

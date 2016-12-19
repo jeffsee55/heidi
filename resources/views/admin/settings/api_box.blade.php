@@ -10,7 +10,7 @@
                 <span class="spinner"></span>
                 <?php
                 $disabled = '';
-                if(empty(get_option('q4vr_api_url')) || empty(get_option('q4vr_api_secret')) || empty(get_option('q4vr_api_client_id')))
+                if(empty(get_option('q4vr_api_settings')))
                 {
                     $disabled = 'disabled';
                 } ?>
