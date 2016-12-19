@@ -65,3 +65,11 @@ $router->group('Admin',
         ]
     ]
 );
+
+$router->group('Frontend',
+    [
+        'SearchFormController' => [
+            'q4fw_nav_hook' => 'renderIndexSearch'
+        ]
+    ]
+);

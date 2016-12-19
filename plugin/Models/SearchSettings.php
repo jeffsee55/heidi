@@ -37,6 +37,7 @@ class SearchSettings extends BaseOption
         {
 
             $arguments = [];
+
             foreach($row['arguments'] as $index => $argument)
             {
                 $key = $argument['key'];

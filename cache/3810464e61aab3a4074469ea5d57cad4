@@ -1,0 +1,30 @@
+<div class="<?php echo $searchForm->wrapperClass; ?>">
+    <div class="<?php echo $searchForm->innerClass; ?>">
+        <form class="searchform" id="<?php echo $searchForm->callType; ?>" action="<?php echo $searchForm->formAction; ?>">
+            <input type="hidden" name="post_type" value="vacation_rental">
+            <input type="hidden" name="s" value="">
+            <input type="hidden" name="action" value="<?php echo $searchForm->action; ?>">
+            <input id="unitCode" type="hidden" name="unit_code" value="<?php echo $searchForm->unitCode; ?>">
+
+            <?php foreach($searchForm->regularItems as $item): ?>
+                <?php echo $item->render(); ?>
+
+            <?php endforeach; ?>
+
+            <?php if($searchForm->advancedItems) { ?>
+                <div id="advancedSearch" class="col-xs-12 advanced-search collapse">
+                    <div class="advanced-fields col-xs-12">
+                        <div class="row">
+                            <?php foreach($searchForm->advancedItems as $item): ?>
+                                <?php echo $item->render(); ?>
+
+                            <?php endforeach; ?>
+                            <input class="visible-xs-block btn btn-primary btn-block" type="submit" value="Search">
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </form>
+        <div id="results"></div>
+    </div>
+</div>

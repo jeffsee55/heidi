@@ -28,6 +28,9 @@ class SettingsPage extends Callback
 
     public function importBox()
     {
+        if(! get_option('q4vr_api_settings'))
+            return;
+            
         $response = Client::get('units', 'limit=-1');
 
         if(property_exists($response, 'units'))
