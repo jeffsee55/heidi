@@ -59,7 +59,7 @@ class SettingsPageController extends Controller
 
         wp_register_script( 'q4vr_admin_ajax', HEIDI_RESOURCE_DIR . 'assets/js/admin_ajax.js', ['jquery', 'q4vr_admin_media'], HEIDI_VERSION, true );
 
-        wp_register_style( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'assets/css/admin_settings.css', [], HEIDI_VERSION);
+        wp_register_style( 'q4vr_admin_settings', HEIDI_RESOURCE_DIR . 'dist/css/main.css', [], HEIDI_VERSION);
 
         if ($hook_suffix == $this->hook_suffix)
         {

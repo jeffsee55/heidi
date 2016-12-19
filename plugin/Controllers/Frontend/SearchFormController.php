@@ -15,4 +15,9 @@ class SearchFormController extends Controller
     {
         SearchForm::render('universal');
     }
+
+    public function enqueueScripts()
+    {
+        wp_enqueue_script( 'q4vr_searchform', HEIDI_RESOURCE_DIR . 'dist/js/bundle.js', [], HEIDI_VERSION, true );
+    }
 }
