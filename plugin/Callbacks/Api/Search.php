@@ -4,6 +4,7 @@ namespace Heidi\Plugin\Callbacks\Api;
 
 use Heidi\Core\Callback;
 use Heidi\Plugin\Models\ApiClient as Client;
+use Heidi\Plugin\Models\VacationRental;
 
 class Search extends Callback
 {
@@ -26,7 +27,6 @@ class Search extends Callback
         $queryString = self::buildQueryString($wp_query);
 
         $response = Client::get('units', $queryString);
-        dd($response);
 
         if(property_exists($response, 'units'))
         {

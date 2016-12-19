@@ -1,1 +1,4 @@
-{{ $post->post_title }}
+@foreach($units as $unit)
+{{ $unit->post_title }}
+<br>
+@endforeach

@@ -100,9 +100,11 @@ class VacationRentalsController extends Controller
 
     public function renderArchive()
     {
-        global $post;
+        global $posts;
 
-        return view('archive', compact('post'));
+        $units = $posts;
+
+        return view('archive', compact('units'));
     }
 
     public function saveMeta($post_id) {
