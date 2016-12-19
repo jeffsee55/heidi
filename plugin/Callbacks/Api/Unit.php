@@ -28,10 +28,8 @@ class Unit extends Callback
 
         $unitCode = get_post_meta($post->ID, 'unit_code', true);
 
-        $unit = Client::get('units/103');
+        $unit = Client::get('units/' . $unitCode);
 
-        $unit = new VacationRental($post, $unit);
-
-        view('single', compact('unit'));
+        $post = new VacationRental($post, $unit);
     }
 }

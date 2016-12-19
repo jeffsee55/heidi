@@ -52,6 +52,7 @@ class VacationRental extends Post
     public function importUnit($unit)
     {
         $attributes = get_object_vars($this);
+        
         foreach((array) $unit as $attribute => $value)
         {
             $this->$attribute = $value;

@@ -95,7 +95,9 @@ class VacationRentalsController extends Controller
     {
         global $post;
 
-        return view('single', compact('post'));
+        $unit = $post;
+
+        return view('single', compact('unit'));
     }
 
     public function renderArchive()

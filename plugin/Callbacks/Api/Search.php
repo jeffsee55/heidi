@@ -8,6 +8,8 @@ use Heidi\Plugin\Models\VacationRental;
 
 class Search extends Callback
 {
+    public static $units;
+
     const QUERY_VARS = [
         'start_date',
         'end_date',
@@ -30,12 +32,22 @@ class Search extends Callback
 
         if(property_exists($response, 'units'))
         {
-            $units = array_map(function($unit) {
-                new VacationRental($post, $unit);
-            }, $response->units);
-        }
+            self::$units = $response->units;
 
-        view('single', compact('units'));
+            $unitCodes = array_pluck($response->units, 'unit_code');
+
+            $meta = [
+                [
+                    'key'       => 'unit_code',
+                    'value'     => $unitCodes,
+                    'compare'   => 'IN'
+                ],
+            ];
+
+            $wp_query->set('meta_query', $meta);
+
+            $wp_query->set('posts_per_page', count($unitCodes));
+        }
     }
 
     public static function buildQueryString($wp_query)
