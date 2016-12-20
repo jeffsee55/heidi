@@ -1,0 +1,15 @@
+.reservation-unit-info h3 {
+    margin-top: 0;
+}
+
+.reservation-amenities {
+    margin-bottom: 1rem;
+}
+
+.reservation-summary .row, .payment-summary .row, .payment-total .row {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.payment-summary .row:nth-child(even), .reservation-summary .row .row:nth-child(even), .payment-total .row:nth-child(even){
+    background-color: #fff;
+}

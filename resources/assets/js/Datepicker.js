@@ -61,7 +61,7 @@ class Q4DateRangePicker extends DateRangePicker
             className={this.getDayPickerContainerClasses()}
             style={dayPickerContainerStyles}
             >
-            <DayPicker
+            <Q4DayPicker
             ref={ref => { this.dayPicker = ref; }}
             orientation={orientation}
             enableOutsideDays={enableOutsideDays}
@@ -177,7 +177,7 @@ class DateRangePickerWrapper extends React.Component {
     componentDidMount() {
         window.addEventListener("resize", this.setResponsiveness);
         var unitInput = document.getElementById('unitCode');
-        if(unitInput) {
+        if(unitInput.val > 0) {
             var unitCode = unitInput.value;
             jQuery.ajax({
                 url: `/wp-admin/admin-ajax.php?action=q4vr_calendar&unit_code=${unitCode}`,
@@ -220,7 +220,7 @@ class DateRangePickerWrapper extends React.Component {
         const { className, focusedInput, startDate, endDate, displayFormat, numberOfMonths, withPortal, checkinUnavailable, checkoutUnavailable, enableOutsideDays, minimumNights } = this.state;
         return (
             <div>
-            <Q4DateRangePicker
+            <DateRangePicker
             {...this.props}
             className={className}
             onDatesChange={this.onDatesChange}

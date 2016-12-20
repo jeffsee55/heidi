@@ -1,0 +1,41 @@
+.unit-header {
+    display: flex;
+    align-items: center;
+
+    span {
+        padding: 0.5rem;
+        font-weight: 100;
+    }
+
+    small {
+        padding: 0.5rem;
+    }
+
+    .unit-header-details {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
+.search-summary-alert.alert.alert-dismissible {
+    display: inline-block;
+    border: 1px solid teal !important;
+    color: teal;
+    padding: 3px 15px !important;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+
+    .close {
+        position: relative;
+        top: 1px;
+        right: -8px;
+        color: inherit;
+    }
+}
+
+.search-summary-alert.alert.alert-dismissible {
+    border: 1px solid teal !important;
+    color: teal;
+}

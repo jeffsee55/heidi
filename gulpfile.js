@@ -11,7 +11,9 @@ var sourcemaps = require('gulp-sourcemaps');
 gulp.task('sass', function () {
     return gulp.src('./resources/assets/sass/main.scss')
         .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass({
+            outputStyle: 'compressed',
+        }).on('error', sass.logError))
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./resources/dist/css'))
         .pipe(notify({
@@ -28,7 +30,10 @@ gulp.task('build', function () {
     .transform(babelify, {presets: ["es2015", "react"]})
     .bundle()
     .pipe(source('bundle.js'))
-    .pipe(gulp.dest('resources/dist/js'));
+    .pipe(gulp.dest('resources/dist/js'))
+    .pipe(notify({
+        message: "Gulp js build complete!"
+    }));
 });
 
 gulp.task('watch', function() {
