@@ -22,16 +22,18 @@ class SearchForm
 
     public $action;
 
-    public $unitCode;
+    public $unitCode = null;
 
     public static function render($layout)
     {
-        new static($layout);
+        $searchform = new static($layout);
+
+        view('searchform', ['searchForm' => $searchform]);
     }
 
     public function __construct($layout)
     {
-        $this->settings = get_option('q4vr_search_settings');
+        $this->settings = $this->settingsForLayout(get_option('q4vr_search_settings'), $layout);
 
         $this->layout = $layout;
 
@@ -52,11 +54,9 @@ class SearchForm
 
     protected function renderItems()
     {
-        $regularItems = $this->getRegularItems();
+        $this->getRegularItems();
 
-        $advancedItems = $this->getAdvancedItems();
-
-        view('searchform', ['searchForm' => $this]);
+        $this->getAdvancedItems();
     }
 
     protected function getRegularItems()
@@ -84,7 +84,13 @@ class SearchForm
                 'callType' => null,
                 'formAction' => '/vacation_rentals',
                 'action' => null,
-                'unitCode' => null
+            ],
+            'single' => [
+                'wrapperClass' => '',
+                'innerClass' => '',
+                'callType' => null,
+                'formAction' => '/vacation_rentals',
+                'action' => null,
             ]
         ];
 
@@ -97,7 +103,16 @@ class SearchForm
         $this->formAction = $vars[$layout]['formAction'];
 
         $this->action = $vars[$layout]['action'];
+    }
 
-        $this->unitCode = $vars[$layout]['unitCode'];
+    public function settingsForLayout($settings, $layout)
+    {
+        $settingsForLayout = (array_map(function($setting) use ($layout) {
+
+            return (! is_null($setting['layouts'][$layout])) ? $setting : null;
+
+        }, $settings));
+
+        return array_filter($settingsForLayout);
     }
 }

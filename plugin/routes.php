@@ -35,8 +35,6 @@ $router->group('Admin',
     [
         'VacationRentalsController' => [
             'template_include'                  => 'loadTemplates',
-            'q4vr_single_page'                  => 'renderSingle',
-            'q4vr_archive_page'                 => 'renderArchive',
             'save_post_vacation_rental'         => 'saveMeta',
             'admin_post_q4vr_import'            => 'importUnits',
             'init' => [
@@ -71,6 +69,12 @@ $router->group('Frontend',
         'SearchFormController' => [
             'q4fw_nav_hook' => 'renderIndexSearch',
             'wp_enqueue_scripts' => 'enqueueScripts'
+        ],
+        'VacationPagesController' => [
+            'sage/display_sidebar' => 'hideSidebar',
+            'q4fw_hero_images' => 'addImages',
+            'q4vr_single_page' => 'renderSingle',
+            'q4vr_archive_page' => 'renderArchive',
         ]
     ]
 );

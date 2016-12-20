@@ -91,24 +91,6 @@ class VacationRentalsController extends Controller
         return $template;
     }
 
-    public function renderSingle()
-    {
-        global $post;
-
-        $unit = $post;
-
-        return view('single', compact('unit'));
-    }
-
-    public function renderArchive()
-    {
-        global $posts;
-
-        $units = $posts;
-
-        return view('archive', compact('units'));
-    }
-
     public function saveMeta($post_id) {
 
         // prevent quickedit from remove meta fields

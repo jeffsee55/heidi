@@ -1,8 +1,28 @@
-<?php echo $unit->name; ?>
+<div class="col-xs-12 col-sm-7">
+    <?php echo $__env->make('units.header', compact('unit'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <hr>
+</div>
+<div class="col-xs-12 col-sm-5">
+    <?php echo $__env->make('searchform', ['searchForm' => $unit->getSearchForm()], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+</div>
 
-<br>
-<?php echo $unit->headline; ?>
+<div class="col-xs-12 col-sm-7">
+    <?php echo $unit->headline; ?>
 
-<br>
-<?php echo $unit->default_image_url; ?>
+    <hr>
+    <?php echo $unit->description; ?>
 
+    <hr>
+    <?php echo $__env->make('units.map', compact('unit'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <hr>
+    Reviews
+</div>
+
+
+<div class="col-xs-12 col-sm-5">
+    More Information
+
+    <div class="col-sm-12">
+        <?php dynamic_sidebar('sidebar-primary'); ?>
+    </div>
+</div>

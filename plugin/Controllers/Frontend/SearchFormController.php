@@ -12,6 +12,9 @@ class SearchFormController extends Controller
 
     public function renderIndexSearch()
     {
+        if(is_singular('vacation_rental'))
+            return;
+            
         SearchForm::render('universal');
     }
 

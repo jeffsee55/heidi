@@ -1,0 +1,6 @@
+<div class="clearfix unit-header box">
+    <div class="col-md-8">
+        <h2 class="entry-title"><?php echo $unit->name; ?> <span>|</span> <small><?php echo $unit->address->city; ?></small></h2>
+    </div>
+    <div class="col-md-4 text-right"><a href="<?php echo $unit->directionsUrl; ?>" target="_blank" class="btn btn-primary">Get Directions</a></div>
+</div>

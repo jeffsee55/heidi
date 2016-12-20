@@ -1,8 +1,10 @@
-<?php foreach($units as $unit): ?>
-    <?php echo $unit->name; ?>
-
-    <br>
-    <?php echo $unit->headline; ?>
-
-    <br>
-<?php endforeach; ?>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="grid">
+        <?php foreach($units as $unit): ?>
+            <div class="col-sm-4">
+                <?php echo $__env->make('units.card', compact('unit'), array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<div role="tabpanel" class="tab-pane" id="map">Map</div>
+</div>
